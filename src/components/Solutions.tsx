@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { SolarPanel, Battery, Car, Wind, Plug, Factory } from 'lucide-react';
+import { Sun, Battery, Car, Wind, Plug, Factory } from 'lucide-react';
 
 const solutions = [
   {
     id: 1,
     title: 'Solar PV Systems',
     description: 'Residential, commercial, and industrial solar photovoltaic systems for clean energy production.',
-    icon: SolarPanel,
+    icon: Sun,
     color: 'from-eco-green-light to-eco-green-dark'
   },
   {

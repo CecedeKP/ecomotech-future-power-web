@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { SolarPanel, Leaf, Factory, Car } from 'lucide-react';
+import { Sun, Leaf, Factory, Car } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const services = [
@@ -8,7 +8,7 @@ const services = [
     id: 1,
     title: 'Solar PV Installation',
     description: 'Professional installation services for residential, commercial, and industrial solar systems.',
-    icon: SolarPanel
+    icon: Sun
   },
   {
     id: 2,
