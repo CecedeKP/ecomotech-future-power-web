@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -119,7 +118,8 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-foreground hover:text-primary transition-colors">Home</Link>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -179,11 +179,11 @@ const Navbar = () => {
 
             <Link to="/projects" className="text-foreground hover:text-primary transition-colors">Projects</Link>
             <Link to="/#about" className="text-foreground hover:text-primary transition-colors">About</Link>
-            <Link to="/#contact" className="text-foreground hover:text-primary transition-colors">Contact</Link>
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">Contact</Link>
           </nav>
 
           <div className="hidden md:flex">
-            <Button>Get in Touch</Button>
+            <Button>Get a Quote</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -201,6 +201,13 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
+              <Link 
+                to="/" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
               <div className="space-y-2">
                 <div className="font-medium text-foreground py-2">Solutions</div>
                 {solutions.map((solution) => (
@@ -248,13 +255,13 @@ const Navbar = () => {
                 About
               </Link>
               <Link 
-                to="/#contact" 
+                to="/contact" 
                 className="text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
               </Link>
-              <Button className="mt-2">Get in Touch</Button>
+              <Button className="mt-2">Get a Quote</Button>
             </nav>
           </div>
         </div>

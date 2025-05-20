@@ -1,7 +1,5 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import ProjectCategories from '@/components/ProjectCategories';
 import { Toaster } from '@/components/ui/sonner';
 
@@ -24,7 +22,6 @@ const Projects = () => {
           <ProjectCategories />
         </div>
       </div>
-      <Footer />
       <Toaster />
     </div>
   );
