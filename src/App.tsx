@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,31 +15,36 @@ import WindEnergy from "./pages/solutions/wind-energy";
 import IndustrialSolutions from "./pages/solutions/industrial-solutions";
 import Projects from "./pages/Projects";
 
+// Create a client
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* Solution Routes */}
-          <Route path="/solutions/solar-pv-systems" element={<SolarPVSystems />} />
-          <Route path="/solutions/battery-storage" element={<BatteryStorage />} />
-          <Route path="/solutions/electric-mobility" element={<ElectricMobility />} />
-          <Route path="/solutions/charging-stations" element={<ChargingStations />} />
-          <Route path="/solutions/wind-energy" element={<WindEnergy />} />
-          <Route path="/solutions/industrial-solutions" element={<IndustrialSolutions />} />
-          {/* Projects Route */}
-          <Route path="/projects" element={<Projects />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              {/* Solution Routes */}
+              <Route path="/solutions/solar-pv-systems" element={<SolarPVSystems />} />
+              <Route path="/solutions/battery-storage" element={<BatteryStorage />} />
+              <Route path="/solutions/electric-mobility" element={<ElectricMobility />} />
+              <Route path="/solutions/charging-stations" element={<ChargingStations />} />
+              <Route path="/solutions/wind-energy" element={<WindEnergy />} />
+              <Route path="/solutions/industrial-solutions" element={<IndustrialSolutions />} />
+              {/* Projects Route */}
+              <Route path="/projects" element={<Projects />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
+  );
+};
 
 export default App;
