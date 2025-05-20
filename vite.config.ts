@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
+  base: '/ecomotech-future-power-web/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -19,6 +20,8 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   build: {
+    outDir: 'dist',
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: {
