@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +12,7 @@ import ElectricMobility from "./pages/solutions/electric-mobility";
 import ChargingStations from "./pages/solutions/charging-stations";
 import WindEnergy from "./pages/solutions/wind-energy";
 import IndustrialSolutions from "./pages/solutions/industrial-solutions";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/solutions/charging-stations" element={<ChargingStations />} />
           <Route path="/solutions/wind-energy" element={<WindEnergy />} />
           <Route path="/solutions/industrial-solutions" element={<IndustrialSolutions />} />
+          {/* Projects Route */}
+          <Route path="/projects" element={<Projects />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

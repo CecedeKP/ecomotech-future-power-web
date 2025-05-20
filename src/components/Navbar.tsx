@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -176,6 +177,7 @@ const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
+            <Link to="/projects" className="text-foreground hover:text-primary transition-colors">Projects</Link>
             <Link to="/#about" className="text-foreground hover:text-primary transition-colors">About</Link>
             <Link to="/#contact" className="text-foreground hover:text-primary transition-colors">Contact</Link>
           </nav>
@@ -229,6 +231,14 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
+
+              <Link 
+                to="/projects" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Projects
+              </Link>
 
               <Link 
                 to="/#about" 
