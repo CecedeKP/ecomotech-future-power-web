@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && componentTagger(),
   ].filter(Boolean),
-  base: '/ecomotech-future-power-web/',
+  base: mode === 'production' ? '/ecomotech-future-power-web/' : '/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -62,4 +62,4 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-}));
+})); 
