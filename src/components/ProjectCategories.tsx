@@ -1,10 +1,15 @@
 
 import React, { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectCard from '@/components/ProjectCard';
+import { Button } from '@/components/ui/button';
 import { Sun, BatteryCharging, Plug, Bus, Lightbulb } from 'lucide-react';
 
 const categories = [
+  {
+    id: 'all',
+    name: 'All Projects',
+    icon: null,
+  },
   {
     id: 'solar-pv',
     name: 'Solar PV',
@@ -126,40 +131,58 @@ const projects = [
 ];
 
 const ProjectCategories = () => {
-  const [activeCategory, setActiveCategory] = useState('solar-pv');
+  const [activeCategory, setActiveCategory] = useState('all');
   
   const filteredProjects = projects.filter(project => 
     activeCategory === 'all' ? true : project.category === activeCategory
   );
 
-  return (
-    <div>
-      <Tabs defaultValue="solar-pv" className="w-full" onValueChange={setActiveCategory}>
-        <div className="flex justify-center mb-8">
-          <TabsList className="bg-gray-100">
-            {categories.map((category) => (
-              <TabsTrigger 
-                key={category.id} 
-                value={category.id}
-                className="flex items-center gap-2"
-              >
-                <category.icon className="h-4 w-4" />
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </div>
+  const projectStats = categories.map(category => {
+    if (category.id === 'all') {
+      return { id: category.id, count: projects.length };
+    }
+    return { 
+      id: category.id, 
+      count: projects.filter(project => project.category === category.id).length 
+    };
+  });
 
-        {categories.map((category) => (
-          <TabsContent key={category.id} value={category.id} className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </TabsContent>
-        ))}
-      </Tabs>
+  return (
+    <div className="space-y-12">
+      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+        {categories.map((category) => {
+          const count = projectStats.find(stat => stat.id === category.id)?.count || 0;
+          const isActive = activeCategory === category.id;
+          
+          return (
+            <Button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              variant={isActive ? "default" : "outline"}
+              className={`transition-all px-4 py-2 ${
+                isActive 
+                  ? "bg-gradient-to-r from-eco-green to-eco-blue-dark text-white" 
+                  : "hover:bg-gradient-to-r hover:from-eco-green/10 hover:to-eco-blue-dark/10"
+              }`}
+            >
+              {category.icon && <category.icon className="h-4 w-4 mr-2" />}
+              {category.name} ({count})
+            </Button>
+          );
+        })}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))
+        ) : (
+          <div className="col-span-3 text-center py-10">
+            <p className="text-lg text-gray-500">No projects found in this category.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
